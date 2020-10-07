@@ -1,0 +1,21 @@
+version: "3.4"
+
+services:
+  fastapi:
+    container_name: "fastapi"
+    build: ./fastapi
+    restart: always
+    tty: true
+    ports:
+      - 8000:8000
+    networks:
+      - share_net
+  ruby:
+    container_name: "ruby"
+    build: ./ruby
+    tty: true
+    networks:
+      - share_net
+networks:
+  share_net:
+    driver: bridge
